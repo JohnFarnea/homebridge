@@ -1,3 +1,4 @@
+var CbusClient = require("./cbusClient.js").CbusClient;
 var Accessory, Service, Characteristic, UUIDGen;
 
 module.exports = function (homebridge) {
@@ -25,6 +26,7 @@ function CbusPlatform(log, config, api) {
     this.log = log;
     this.config = config;
     this.configuredAccessories = [];
+    this.CbusClient = new CbusClient(this.log, this.config);
 
     if (api) {
         // Save the API object as plugin needs to register new accessory via this object.
@@ -80,11 +82,13 @@ CbusPlatform.prototype.setupAccessory = function(accessory) {
     service.getCharacteristic(Characteristic.On)
         .on('set', function (value, callback) {
             platform.log(accessory.displayName, "Light -> " + value);
+            platform.CbusClient.setValue(accessory.context.group, value);
             callback();
         })
         .on('get', function (callback) {
             platform.log(accessory.displayName, "Get the value from CBUS");
-            callback(null, true);
+            var val = platform.CbusClient.getValue(accessory.context.group);
+            callback(null, val);
         });
 }
 
@@ -101,6 +105,7 @@ CbusPlatform.prototype.registerNewAccessories = function() {
         var newAccessory = new Accessory(accessoryName, uuid);
         if (!this.isconfigured(newAccessory)) {
             platform.setupAccessory(newAccessory);
+            newAccessory.context.group = group.group;
             accessoryList.push(newAccessory);
             this.log("New accessory : " + accessoryName);
         }
