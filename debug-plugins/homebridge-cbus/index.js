@@ -84,7 +84,7 @@ CbusPlatform.prototype.setupAccessory = function(accessory) {
         })
         .on('get', function (callback) {
             platform.log(accessory.displayName, "Get the value from CBUS");
-            callback(0);
+            callback(null, true);
         });
 }
 
@@ -92,20 +92,21 @@ CbusPlatform.prototype.registerNewAccessories = function() {
     var platform = this;
     this.log("running resgisterNewAccessories()");
 
-    var newNames = ["Test1", "Test2", "Test3", "Test4", "Test5", "Test6"]; // TODO Get these from config
     var accessoryList = [];
     
-    for (var i=0; i< newNames.length; i++) {
-        var accessoryName = newNames[i];
+    for (var i=0; i< platform.config.accessories.length; i++) {
+        var group = platform.config.accessories[i];
+        var accessoryName = group.name;
         uuid = UUIDGen.generate(accessoryName);
         var newAccessory = new Accessory(accessoryName, uuid);
         if (!this.isconfigured(newAccessory)) {
             platform.setupAccessory(newAccessory);
             accessoryList.push(newAccessory);
+            this.log("New accessory : " + accessoryName);
         }
     }
 
-    this.log("Registering " + accessoryList.length + " new accessories!");
+    this.log("Registered " + accessoryList.length + " new accessories!");    
     this.api.registerPlatformAccessories("homebridge-cbus", "CbusPlatform", accessoryList);
 
 }
@@ -117,39 +118,6 @@ CbusPlatform.prototype.isconfigured = function(accessory) {
             return true;
     }
     return false;
-}
-
-
-CbusPlatform.prototype.createAccessory = function(accessoryName) {
-    this.log("runnin createAccessory()");
-    var platform = this;
-    var uuid;
-
-    uuid = UUIDGen.generate(accessoryName);
-
-    var accessory = new Accessory(accessoryName, uuid);
-
-    accessory.on('identify', function (paired, callback) {
-        platform.log(accessory.displayName, "Identify!!!");
-        callback();
-    });
-
-    // Plugin can save context on accessory
-    // To help restore accessory in configureAccessory()
-    // newAccessory.context.something = "Something"
-
-    accessory.addService(Service.Lightbulb, "Test Light")
-        .getCharacteristic(Characteristic.On)
-        .on('set', function (value, callback) {
-            platform.log(accessory.displayName, "Light -> " + value);
-            callback();
-        })
-        .on('get', function (callback) {
-            platform.log(accessory.displayName, "Get the value from CBUS");
-            callback(0);
-        });
-
-    return accessory;
 }
 
 // Sample function to show how developer can add accessory dynamically from outside event

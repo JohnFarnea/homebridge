@@ -10,3 +10,7 @@ npm-debug.log
 # Ignore any extra plugins in the example directory that aren't in Git already
 # (this is a sandbox for the user)
 example-plugins
+
+# ignore development stuff except for config.
+.development-user/accessories/
+.development-user/persist/
