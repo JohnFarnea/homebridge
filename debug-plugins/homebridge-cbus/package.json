@@ -1,0 +1,20 @@
+{
+  "name": "homebridge-cbus",
+  "version": "0.0.1",
+  "description": "Clipsal CBUS Platform plugin for homebridge: https://github.com/nfarina/homebridge",
+  "license": "ISC",
+  "keywords": [
+    "homebridge-plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/johnfarnea/homebridge.git"
+  },
+  "bugs": {
+    "url": "http://github.com/johnfarnea/homebridge/issues"
+  },
+  "engines": {
+    "node": ">=0.12.0",
+    "homebridge": ">=0.2.0"
+  }
+}

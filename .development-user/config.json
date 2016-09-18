@@ -8,17 +8,14 @@
     
     "description": "Development configuration for testing",
 
-    "accessories": [
-        {
-            "accessory": "WeMo",
-            "name": "Coffee Maker"
-        }
-    ],
-
     "platforms": [
         {
-            "platform" : "Testing123",
-            "name" : "t123"
+            "platform" : "CbusPlatform",
+            "name" : "CBUS Platform!!"
+        },
+        {
+            "platform" : "Test2",
+            "name" : "Test 2 Platform"
         }
     ]
 }
