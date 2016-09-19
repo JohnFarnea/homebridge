@@ -6,8 +6,8 @@
 * <del>Load the accessories from a config which includes name, group<del>
 * <del>Setting initial values<del>
 * <del>Write a Fake CBUS Api - ensure single instance invoked only<del>
-* Write Dimmer accessory
 * Real CBUS API to Set values
 * Real CBUS API to Get values
+* Write Dimmer accessory
+* Update accessory state from external CBUS events
 * Set Room from Config file
-

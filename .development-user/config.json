@@ -11,23 +11,26 @@
     "platforms": [
         {
             "platform" : "CbusPlatform",
-            "name" : "CBUS Platform!!",
+            "name" : "CBUS",
             "accessories" : [
                 {
                     "group" : "OfficeDL",
                     "name" : "Office Downlights",
+                    "type" : "dimmer",
                     "room" : "Office"
                 },
                 {
                     "group" : "LivingDL",
                     "name" : "Living Downlights",
+                    "type": "dimmer",
+                    "room" : "Living"
+                },
+                {
+                    "group" :"//WIND38/254/56/53",
+                    "name" : "Living Room Lamp",
                     "room" : "Living"
                 }
             ]
-        },
-        {
-            "platform" : "Test2",
-            "name" : "Test 2 Platform"
         }
     ]
 }
