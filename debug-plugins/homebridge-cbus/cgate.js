@@ -5,140 +5,136 @@ var control = {};
 var events = {};
 var statuses = {};
 
-exports.init = function(){
+function CGate(log, config) {
   // TELNET SESSION TO CONTROL
-  control = net.createConnection(CONFIG.cgate.contolport,CONFIG.cgate.host);
-  control.on('error', function(error){
-      console.log('cgate control socket error: ' + error);
+  var CGate = this;
+  this.log = log;
+  this.config = config;
+  control = net.createConnection(config.cgate.contolport, config.cgate.host);
+  control.on('error', function (error) {
+    log('cgate control socket error: ' + error);
   });
-  control.on('end', function(){
-      console.log('cgate control socket terminated');
+  control.on('end', function () {
+    log('cgate control socket terminated');
   });
-  control.on('close', function(){
-      console.log('cgate control socket closed');
+  control.on('close', function () {
+    log('cgate control socket closed');
   });
-  control.on('timeout', function(){
-      console.log('cgate control socket timed out');
+  control.on('timeout', function () {
+    log('cgate control socket timed out');
   });
-  carrier.carry(control, function(line) {
-    pushRealtime('controlStream',line);
-  });
-
-  // TELNET CHANNEL TO STATUS UPDATES
-  events = net.createConnection(CONFIG.cgate.eventport,CONFIG.cgate.host);
-  events.on('error', function(error){
-      console.log('cgate events socket error: ' + error);
-  });
-  events.on('end', function(){
-      console.log('cgate events socket terminated');
-  });
-  events.on('close', function(){
-      console.log('cgate events socket closed');
-  });
-  events.on('timeout', function(){
-      console.log('cgate events socket timed out');
-  });
-  carrier.carry(events, function(line) {
-    pushRealtime('eventStream',line);
+  carrier.carry(control, function (line) {
+    CGate.pushRealtime('controlStream', line);
   });
 
   // TELNET CHANNEL TO STATUS UPDATES
-  statuses = net.createConnection(CONFIG.cgate.statusport,CONFIG.cgate.host);
-  statuses.on('error', function(error){
-      console.log('cgate statuses socket error: ' + error);
+  events = net.createConnection(this.config.cgate.eventport, this.config.cgate.host);
+  events.on('error', function (error) {
+    log('cgate events socket error: ' + error);
   });
-  statuses.on('end', function(){
-      console.log('cgate statuses socket terminated');
+  events.on('end', function () {
+    CGate.log('cgate events socket terminated');
   });
-  statuses.on('close', function(){
-      console.log('cgate statuses socket closed');
+  events.on('close', function () {
+    CGate.log('cgate events socket closed');
   });
-  statuses.on('timeout', function(){
-      console.log('cgate statuses socket timed out');
+  events.on('timeout', function () {
+    CGate.log('cgate events socket timed out');
   });
-  carrier.carry(statuses, function(line) {
-    pushRealtime('statusStream',line);
+  carrier.carry(events, function (line) {
+    CGate.pushRealtime('eventStream', line);
   });
+
+  // TELNET CHANNEL TO STATUS UPDATES
+  statuses = net.createConnection(this.config.cgate.statusport, this.config.cgate.host);
+  statuses.on('error', function (error) {
+    log('cgate statuses socket error: ' + error);
+  });
+  statuses.on('end', function () {
+    log('cgate statuses socket terminated');
+  });
+  statuses.on('close', function () {
+    log('cgate statuses socket closed');
+  });
+  statuses.on('timeout', function () {
+    log('cgate statuses socket timed out');
+  });
+  carrier.carry(statuses, function (line) {
+    CGate.pushRealtime('statusStream', line);
+  });
+
 
   // every time that a message arrives, we need to send it out the realtime websocket
-  function pushRealtime(type, message) {
-    console.log(type+' : '+message);
-    // every message, before being sent out needs to be parsed to create a nice object that can be consumed
-    var parsedMessage = parseMessage(message,type);
-    //IO.emit(type, parsedMessage);
-    console.log(parsedMessage);
-  }
-
   // periodically list the levels of all devices to make sure they are in sync
-  setTimeout(syncLevels, 5000);
+  setTimeout(this.syncLevels.bind(this), 5000);
   // repeat every 20 mins
-  setInterval(syncLevels, 1200000)
+  setInterval(this.syncLevels.bind(this), 1200000)
 
-  return module.exports;
+  //return module.exports;
 }
 
-exports.write = function(msg){
-  if(msg){
+CGate.prototype.write = function (msg) {
+  if (msg) {
     control.write(msg);
   }
 }
 
-exports.cmdString = function(device,command,level,delay) {
-    var message = '';
+CGate.prototype.cmdString = function (device, command, level, delay) {
+  var message = '';
 
-    if(command=='on') {
-        message = 'ON //'+CONFIG.cgate.cbusname+'/'+CONFIG.cgate.network+'/'+CONFIG.cgate.application+'/'+device+'\n';
-    }
-    else if (command=='off') {
-        message = 'OFF //'+CONFIG.cgate.cbusname+'/'+CONFIG.cgate.network+'/'+CONFIG.cgate.application+'/'+device+'\n';
-    }
-    else if (command=='ramp') {
+  if (command == 'on') {
+    message = 'ON //' + this.config.cgate.cbusname + '/' + this.config.cgate.network + '/' + this.config.cgate.application + '/' + device + '\n';
+  }
+  else if (command == 'off') {
+    message = 'OFF //' + this.config.cgate.cbusname + '/' + this.config.cgate.network + '/' + this.config.cgate.application + '/' + device + '\n';
+  }
+  else if (command == 'ramp') {
 
-      if (level <= 100) {
-        if (delay) {
-          message = 'RAMP //'+CONFIG.cgate.cbusname+'/'+CONFIG.cgate.network+'/'+CONFIG.cgate.application+'/'+device+' '+level+'% '+delay+'\n';
-        } else {
-          message = 'RAMP //'+CONFIG.cgate.cbusname+'/'+CONFIG.cgate.network+'/'+CONFIG.cgate.application+'/'+device+' '+level+'%\n';
-        }
+    if (level <= 100) {
+      if (delay) {
+        message = 'RAMP //' + this.config.cgate.cbusname + '/' + this.config.cgate.network + '/' + this.config.cgate.application + '/' + device + ' ' + level + '% ' + delay + '\n';
+      } else {
+        message = 'RAMP //' + this.config.cgate.cbusname + '/' + this.config.cgate.network + '/' + this.config.cgate.application + '/' + device + ' ' + level + '%\n';
       }
     }
-    return message;
+  }
+  return message;
 }
 
-function humanLevelValue(level) {
-    // convert levels from 0-255 to 0-100
-    var temp = Math.round((level/255)*100)
+CGate.prototype.humanLevelValue = function (level) {
+  // convert levels from 0-255 to 0-100
+  var temp = Math.round((level / 255) * 100)
 
-    if(temp > 100){
-        temp = 100;
-    }
-    else if(temp < 0){
-        temp = 0;
-    }
+  if (temp > 100) {
+    temp = 100;
+  }
+  else if (temp < 0) {
+    temp = 0;
+  }
 
-    return temp;
+  return temp;
 }
 
-function syncLevels(){
-  console.log('cgate syncing levels');
-  var msg = message = 'GET //'+CONFIG.cgate.cbusname+'/'+CONFIG.cgate.network+'/'+CONFIG.cgate.application+'/* level\n';
+CGate.prototype.syncLevels = function () {
+  this.log('cgate syncing levels');
+  var msg = message = 'GET //' + this.config.cgate.cbusname + '/' + this.config.cgate.network + '/' + this.config.cgate.application + '/* level\n';
   control.write(msg);
 }
 
 ////////////////////////
 // MESSAGE PROCESSING
 ////////////////////////
-function parseMessage(data,type) {
-  console.log(data);
+CGate.prototype.parseMessage = function (data, type) {
+  this.log(data);
 
-  var packet = {raw:data};
+  var packet = { raw: data };
   packet.type = 'unknown';
   packet.source = 'cbus';
 
   var array = data.match(/\b[\S]+\b/g);
 
   // is this a lighting packet?
-  if (array[0]=='lighting') {
+  if (array[0] == 'lighting') {
     packet.type = 'lighting';
 
     packet.action = array[1];
@@ -151,7 +147,7 @@ function parseMessage(data,type) {
     var parseoid = array[4];
 
     if (packet.action == 'ramp') {
-      packet.level = humanLevelValue(array[3]);
+      packet.level = this.humanLevelValue(array[3]);
       packet.time = array[4];
       parseunit = array[5];
       parseoid = array[6];
@@ -170,23 +166,36 @@ function parseMessage(data,type) {
 
   // are we getting group level report?
   if (array[0].substring(0, 3) == '300') {
-    var temp = array[array.length-1].split('=');
-    if(temp[0] == 'level') {
+    var temp = array[array.length - 1].split('=');
+    if (temp[0] == 'level') {
       packet.type = 'info';
-      packet.level = humanLevelValue(temp[1]);
+      packet.level = this.humanLevelValue(temp[1]);
       var ind = (array.length == 3 ? 1 : 0);
       var temp2 = array[ind].match(/\d+/g);
-      packet.group = temp2[temp2.length-1];
+      packet.group = temp2[temp2.length - 1];
     }
   }
 
-  console.log(packet);
+  this.log(packet);
 
   // are there custom things we want to do when this event occurs? ONLY do this for the status stream
-  if(type=='statusStream'||packet.type=='info'){
+  if (type == 'statusStream' || packet.type == 'info') {
     //COMMON.processMessage(packet);
   }
 
 
   return packet;
+}
+
+CGate.prototype.pushRealtime = function (type, message) {
+  this.log(type + ' : ' + message);
+  // every message, before being sent out needs to be parsed to create a nice object that can be consumed
+  var parsedMessage = this.parseMessage(message, type);
+  //IO.emit(type, parsedMessage);
+  this.log(parsedMessage);
+}
+
+
+module.exports = {
+  CGate : CGate
 }

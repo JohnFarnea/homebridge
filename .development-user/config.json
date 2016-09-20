@@ -5,30 +5,38 @@
         "port": 51826,
         "pin": "031-45-154"
     },
-    
     "description": "Development configuration for testing",
-
     "platforms": [
         {
-            "platform" : "CbusPlatform",
-            "name" : "CBUS",
-            "accessories" : [
+            "platform": "CbusPlatform",
+            "name": "CBUS",
+            "cgate": {
+                "host": "192.168.4.45",
+                "contolport": 20023,
+                "eventport": 20024,
+                "statusport": 20025,
+                "cbusname": "WIND38",
+                "network": 254,
+                "application": 56
+            },
+            "accessories": [
                 {
-                    "group" : "OfficeDL",
-                    "name" : "Office Downlights",
-                    "type" : "dimmer",
-                    "room" : "Office"
-                },
-                {
-                    "group" : "LivingDL",
-                    "name" : "Living Downlights",
+                    "group": "OfficeDL",
+                    "name": "Office Downlights",
                     "type": "dimmer",
-                    "room" : "Living"
+                    "room": "Office"
                 },
                 {
-                    "group" :"//WIND38/254/56/53",
-                    "name" : "Living Room Lamp",
-                    "room" : "Living"
+                    "group": "LivingDL",
+                    "name": "Living Downlights",
+                    "type": "dimmer",
+                    "room": "Living"
+                },
+                {
+                    "group": "//WIND38/254/56/53",
+                    "name": "Living Room Lamp",
+                    "type": "dimmer",
+                    "room": "Living"
                 }
             ]
         }

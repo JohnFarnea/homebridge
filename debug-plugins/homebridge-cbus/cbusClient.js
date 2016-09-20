@@ -1,4 +1,4 @@
-CONFIG = require('./config');
+var CGate = require("./cgate").CGate;
 
 function CbusClient(log, config) {
     this.log = log;
@@ -6,9 +6,9 @@ function CbusClient(log, config) {
     this.config = config;
     this.groupCache = {};
 
-    if(CONFIG.cgate){
+    if(config.cgate){
         console.log('Initializing the cgate connector');
-        this.cgate = require('./cgate').init();
+        this.cgate = new CGate(log, config);
         this.cgate.write("PROJECT USE WIND38\r");
         this.cgate.write("NET OPEN 254\r");
     }
