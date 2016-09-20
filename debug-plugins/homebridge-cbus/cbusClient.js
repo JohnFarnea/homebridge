@@ -16,7 +16,7 @@ function CbusClient(log, config) {
 
 CbusClient.prototype.setValue = function(group, value) {
     // convert Sii true/false to On/Off
-    if (value === true) {
+    if (value === true || value === 1) {
         value = 255;
     }
     if (value == false) {
