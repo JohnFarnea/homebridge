@@ -101,7 +101,7 @@ CbusPlatform.prototype.registerNewAccessories = function() {
     for (var i=0; i< platform.config.accessories.length; i++) {
         var group = platform.config.accessories[i];
         var accessoryName = group.name;
-        uuid = UUIDGen.generate(accessoryName);
+        uuid = UUIDGen.generate(accessoryName + group.group);
         var newAccessory = new Accessory(accessoryName, uuid);
         if (!this.isconfigured(newAccessory)) {
             platform.setupAccessory(newAccessory);

@@ -21,22 +21,724 @@
             },
             "accessories": [
                 {
-                    "group": "OfficeDL",
-                    "name": "Office Downlights",
-                    "type": "dimmer",
+                    "group": "MainBedSPOE",
+                    "name": "Jackie's Lamp",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom"
+                },
+                {
+                    "group": "MainBedSPOW",
+                    "name": "John's Lamp",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom"
+                },
+                {
+                    "group": "MainBedRobeDL",
+                    "name": "Robe",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom"
+                },
+                {
+                    "group": "MainBedDL",
+                    "name": "Downlights",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom"
+                },
+                {
+                    "group": "MainBedReadDLE",
+                    "name": "Jackie's Reading Lamp",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom"
+                },
+                {
+                    "group": "MainBedReadDLW",
+                    "name": "John's Reading Lamp",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom"
+                },
+                {
+                    "group": "MainEnsVanityWL",
+                    "name": "Vanity Wall Lights",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom Ensuite"
+                },
+                {
+                    "group": "MainEnsDL",
+                    "name": "Vanity Downlights",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom Ensuite"
+                },
+                {
+                    "group": "MainEnsShwrDL",
+                    "name": "Shower Light",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom Ensuite"
+                },
+                {
+                    "group": "MainEnsToiletDL",
+                    "name": "Toilet Light",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom Ensuite"
+                },
+                {
+                    "group": "MainEnsBathDL",
+                    "name": "Bath Downlight",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom Ensuite"
+                },
+                {
+                    "group": "MainEnsHeat",
+                    "name": "Heat Lamp",
+                    "type": "Switch",
+                    "room": "Main Bedroom Ensuite"
+                },
+                {
+                    "group": "LoungeSPO",
+                    "name": "Lamps",
+                    "type": "Dimmer",
+                    "room": "Living Room"
+                },
+                {
+                    "group": "LoungeDLE",
+                    "name": "Downlight East",
+                    "type": "Dimmer",
+                    "room": "Living Room"
+                },
+                {
+                    "group": "LoungeDLC",
+                    "name": "Downlight Centre",
+                    "type": "Dimmer",
+                    "room": "Living Room"
+                },
+                {
+                    "group": "LoungeDLW",
+                    "name": "Downlight West",
+                    "type": "Dimmer",
+                    "room": "Living Room"
+                },
+                {
+                    "group": "Fireplace",
+                    "name": "Fireplace",
+                    "type": "Switch",
+                    "room": "Living Room"
+                },
+                {
+                    "group": "KitchenCooktopDL",
+                    "name": "Cooktop",
+                    "type": "Dimmer",
+                    "room": "Kitchen"
+                },
+                {
+                    "group": "KitchenBackDL",
+                    "name": "Back Downlights",
+                    "type": "Dimmer",
+                    "room": "Kitchen"
+                },
+                {
+                    "group": "KitchenFrontDL",
+                    "name": "Front Downlights",
+                    "type": "Dimmer",
+                    "room": "Kitchen"
+                },
+                {
+                    "group": "KitchenIsland",
+                    "name": "Island Lights",
+                    "type": "Dimmer",
+                    "room": "Kitchen"
+                },
+                {
+                    "group": "FLoungePendant",
+                    "name": "Pendant",
+                    "type": "Dimmer",
+                    "room": "Lounge"
+                },
+                {
+                    "group": "FLoungeDL",
+                    "name": "Downlights",
+                    "type": "Dimmer",
+                    "room": "Lounge"
+                },
+                {
+                    "group": "PwrOffice1Lamp",
+                    "name": "Lamp",
+                    "type": "Switch",
                     "room": "Office"
                 },
                 {
-                    "group": "LivingDL",
-                    "name": "Living Downlights",
-                    "type": "dimmer",
-                    "room": "Living"
+                    "group": "OfficeDL",
+                    "name": "Downlights",
+                    "type": "Dimmer",
+                    "room": "Office"
                 },
                 {
-                    "group": "//WIND38/254/56/53",
-                    "name": "Living Room Lamp",
-                    "type": "dimmer",
-                    "room": "Living"
+                    "group": "GymDL",
+                    "name": "Gym Downlights",
+                    "type": "Dimmer",
+                    "room": "Gym and Garage"
+                },
+                {
+                    "group": "GarageDL",
+                    "name": "Garage Downlights",
+                    "type": "Dimmer",
+                    "room": "Gym and Garage"
+                },
+                {
+                    "group": "LoungeMealsDL",
+                    "name": "Downlights",
+                    "type": "Dimmer",
+                    "room": "Dining"
+                },
+                {
+                    "group": "EntryPendant",
+                    "name": "Pendant",
+                    "type": "Dimmer",
+                    "room": "Entry, Halls and Voids"
+                },
+                {
+                    "group": "EntryWFUL",
+                    "name": "Entry Water Feature Lights",
+                    "type": "Dimmer",
+                    "room": "Entry, Halls and Voids"
+                },
+                {
+                    "group": "EntryGardenUL",
+                    "name": "Entry Garden",
+                    "type": "Dimmer",
+                    "room": "Outside Front"
+                },
+                {
+                    "group": "GarageUL",
+                    "name": "Garage Uplights",
+                    "type": "Dimmer",
+                    "room": "Outside Front"
+                },
+                {
+                    "group": "FrontGardenNUL",
+                    "name": "Garden North",
+                    "type": "Dimmer",
+                    "room": "Outside Front"
+                },
+                {
+                    "group": "FrontGardenSUL",
+                    "name": "Garden South",
+                    "type": "Dimmer",
+                    "room": "Outside Front"
+                },
+                {
+                    "group": "OSOfficeUL",
+                    "name": "Office Wall",
+                    "type": "Dimmer",
+                    "room": "Outside Front"
+                },
+                {
+                    "group": "FrontFeatWallUL",
+                    "name": "Feature Wall",
+                    "type": "Dimmer",
+                    "room": "Outside Front"
+                },
+                {
+                    "group": "DHallWALL",
+                    "name": "Hall Wall Lights",
+                    "type": "Dimmer",
+                    "room": "Entry, Halls and Voids"
+                },
+                {
+                    "group": "DHallDL",
+                    "name": "Hall Downlights",
+                    "type": "Dimmer",
+                    "room": "Entry, Halls and Voids"
+                },
+                {
+                    "group": "StairTREAD",
+                    "name": "Stair Tread",
+                    "type": "Dimmer",
+                    "room": "Entry, Halls and Voids"
+                },
+                {
+                    "group": "StairDL",
+                    "name": "Stair Downlight",
+                    "type": "Dimmer",
+                    "room": "Entry, Halls and Voids"
+                },
+                {
+                    "group": "FLoungePendant",
+                    "name": "Lounge Pendant",
+                    "type": "Dimmer",
+                    "room": "Entry, Halls and Voids"
+                },
+                {
+                    "group": "DiningPendant",
+                    "name": "Dining Pendant",
+                    "type": "Dimmer",
+                    "room": "Entry, Halls and Voids"
+                },
+                {
+                    "group": "UHallDL",
+                    "name": "Upstairs Hall",
+                    "type": "Dimmer",
+                    "room": "Entry, Halls and Voids"
+                },
+                {
+                    "group": "Pool",
+                    "name": "Pool Lights",
+                    "type": "Dimmer",
+                    "room": "Ponds and Pool"
+                },
+                {
+                    "group": "SpaLight",
+                    "name": "Spa Light",
+                    "type": "Dimmer",
+                    "room": "Ponds and Pool"
+                },
+                {
+                    "group": "PoolWFWL",
+                    "name": "Pool Wall",
+                    "type": "Dimmer",
+                    "room": "Ponds and Pool"
+                },
+                {
+                    "group": "PondLoungeUL",
+                    "name": "Courtyard Pond",
+                    "type": "Dimmer",
+                    "room": "Ponds and Pool"
+                },
+                {
+                    "group": "PondEntryUL",
+                    "name": "Entry Pond",
+                    "type": "Dimmer",
+                    "room": "Ponds and Pool"
+                },
+                {
+                    "group": "EntryWFUL",
+                    "name": "Entry Water Feature",
+                    "type": "Dimmer",
+                    "room": "Ponds and Pool"
+                },
+                {
+                    "group": "GuestSPOW",
+                    "name": "Lamp West",
+                    "type": "Dimmer",
+                    "room": "Guest Room"
+                },
+                {
+                    "group": "GuestSPOE",
+                    "name": "Lamp East",
+                    "type": "Dimmer",
+                    "room": "Guest Room"
+                },
+                {
+                    "group": "GuestDL",
+                    "name": "Downlights",
+                    "type": "Dimmer",
+                    "room": "Guest Room"
+                },
+                {
+                    "group": "GuestEntDL",
+                    "name": "Entry Downlights",
+                    "type": "Dimmer",
+                    "room": "Guest Room"
+                },
+                {
+                    "group": "GuestEnsBathDL",
+                    "name": "Bath Downlight",
+                    "type": "Dimmer",
+                    "room": "Guest Room"
+                },
+                {
+                    "group": "GuestEnsShwrDL",
+                    "name": "Shower Downlight",
+                    "type": "Dimmer",
+                    "room": "Guest Room"
+                },
+                {
+                    "group": "GuestEnsVanityDL",
+                    "name": "Vanity Downlight",
+                    "type": "Dimmer",
+                    "room": "Guest Room"
+                },
+                {
+                    "group": "GuestEnsToiletDL",
+                    "name": "Toilet Downlight",
+                    "type": "Dimmer",
+                    "room": "Guest Room"
+                },
+                {
+                    "group": "GuestEnsHeat",
+                    "name": "Heat Lamp",
+                    "type": "Switch",
+                    "room": "Guest Room"
+                },
+                {
+                    "group": "GuestEnsHeatLight",
+                    "name": "Heat Lamp Light",
+                    "type": "Switch",
+                    "room": "Guest Room"
+                },
+                {
+                    "group": "PondLounge",
+                    "name": "Courtyard Ponds",
+                    "type": "Switch",
+                    "room": "Ponds"
+                },
+                {
+                    "group": "PondEntry",
+                    "name": "Entry Pond",
+                    "type": "Switch",
+                    "room": "Ponds"
+                },
+                {
+                    "group": "EntryWF",
+                    "name": "Entry Water Feature",
+                    "type": "Switch",
+                    "room": "Ponds"
+                },
+                {
+                    "group": "PoolChemiGem",
+                    "name": "Pool Filter",
+                    "type": "Switch",
+                    "room": "Pool"
+                },
+                {
+                    "group": "PoolCleanerPump",
+                    "name": "In Floor Cleaning",
+                    "type": "Switch",
+                    "room": "Pool"
+                },
+                {
+                    "group": "PoolHeaterPump",
+                    "name": "Spa Heater",
+                    "type": "Switch",
+                    "room": "Pool"
+                },
+                {
+                    "group": "Fireplace",
+                    "name": "Lounge Fireplace",
+                    "type": "Switch",
+                    "room": "Fireplaces"
+                },
+                {
+                    "group": "MainBedFanDLT",
+                    "name": "Main Bed",
+                    "type": "Fan",
+                    "room": "Fans"
+                },
+                {
+                    "group": "GuestFanDLT",
+                    "name": "Guest Bed",
+                    "type": "Fan",
+                    "room": "Fans"
+                },
+                {
+                    "group": "Bed2FanDLT",
+                    "name": "Bedroom 3",
+                    "type": "Fan",
+                    "room": "Fans"
+                },
+                {
+                    "group": "GymFanDLT",
+                    "name": "Gym",
+                    "type": "Fan",
+                    "room": "Fans"
+                },
+                {
+                    "group": "IrrigationMain",
+                    "name": "Main Power",
+                    "type": "Switch",
+                    "room": "Irrigation"
+                },
+                {
+                    "group": "IrrigationZoneBackNE",
+                    "name": "Back NE Zone",
+                    "type": "Switch",
+                    "room": "Irrigation"
+                },
+                {
+                    "group": "IrrigationZoneBackNW",
+                    "name": "Back NW Zone",
+                    "type": "Switch",
+                    "room": "Irrigation"
+                },
+                {
+                    "group": "IrrigationZoneBackS",
+                    "name": "Back South Zone",
+                    "type": "Switch",
+                    "room": "Irrigation"
+                },
+                {
+                    "group": "IrrigationZoneFrontNPlusEntry",
+                    "name": "Front North and Entry",
+                    "type": "Switch",
+                    "room": "Irrigation"
+                },
+                {
+                    "group": "IrrigationZoneFrontS",
+                    "name": "Front South",
+                    "type": "Switch",
+                    "room": "Irrigation"
+                },
+                {
+                    "group": "BackGardenN",
+                    "name": "Garden North",
+                    "type": "Dimmer",
+                    "room": "Outside Back"
+                },
+                {
+                    "group": "BackGardenS",
+                    "name": "Garden South",
+                    "type": "Dimmer",
+                    "room": "Outside Back"
+                },
+                {
+                    "group": "BackSpot",
+                    "name": "Spotlight",
+                    "type": "Dimmer",
+                    "room": "Outside Back"
+                },
+                {
+                    "group": "BalconyDL",
+                    "name": "Balcony Downlights",
+                    "type": "Dimmer",
+                    "room": "Main Bedroom"
+                },
+                {
+                    "group": "BBQDL",
+                    "name": "BBQ Downlights",
+                    "type": "Dimmer",
+                    "room": "Outside Back"
+                },
+                {
+                    "group": "BBQUL",
+                    "name": "BBQ Uplights",
+                    "type": "Dimmer",
+                    "room": "Outside Back"
+                },
+                {
+                    "group": "PavillionDL",
+                    "name": "Pavillion Downlights",
+                    "type": "Dimmer",
+                    "room": "Outside Back"
+                },
+                {
+                    "group": "PavillionUL",
+                    "name": "Pavillion Uplights",
+                    "type": "Dimmer",
+                    "room": "Outside Back"
+                },
+                {
+                    "group": "SecurityLightSouth",
+                    "name": "South Side Light",
+                    "type": "Dimmer",
+                    "room": "Outside Back"
+                },
+                {
+                    "group": "LaundryDL",
+                    "name": "Laundry Downlights",
+                    "type": "Dimmer",
+                    "room": "Laundry and Bathroom"
+                },
+                {
+                    "group": "CommonVanityWL",
+                    "name": "Vanity Wall Lights",
+                    "type": "Dimmer",
+                    "room": "Laundry and Bathroom"
+                },
+                {
+                    "group": "CommonVanityDL",
+                    "name": "Vanity Downlights",
+                    "type": "Dimmer",
+                    "room": "Laundry and Bathroom"
+                },
+                {
+                    "group": "CommonToiletDL",
+                    "name": "Toilet Downlights",
+                    "type": "Dimmer",
+                    "room": "Laundry and Bathroom"
+                },
+                {
+                    "group": "CommonToiletFan",
+                    "name": "Toilet Fan",
+                    "type": "Switch",
+                    "room": "Laundry and Bathroom"
+                },
+                {
+                    "group": "Bed2DL",
+                    "name": "Downlights",
+                    "type": "Dimmer",
+                    "room": "Bedroom 3"
+                },
+                {
+                    "group": "Bed2Robe",
+                    "name": "Robe Light",
+                    "type": "Switch",
+                    "room": "Bedroom 3"
+                },
+                {
+                    "group": "Bed2EnsDL",
+                    "name": "Ensuite Downlight",
+                    "type": "Dimmer",
+                    "room": "Bedroom 3"
+                },
+                {
+                    "group": "Bed2EnsFan",
+                    "name": "Ensuite Fan",
+                    "type": "Switch",
+                    "room": "Bedroom 3"
+                },
+                {
+                    "group": "Bed2EnsHeat",
+                    "name": "Ensuite Heat Lamp",
+                    "type": "Switch",
+                    "room": "Bedroom 3"
+                },
+                {
+                    "group": "Bed2EnsHeatLight",
+                    "name": "Ensuite Heat Lamp Light",
+                    "type": "Switch",
+                    "room": "Bedroom 3"
+                },
+                {
+                    "group": "HeaterN1",
+                    "name": "Pavillion North 1",
+                    "type": "Switch",
+                    "room": "Heaters"
+                },
+                {
+                    "group": "HeaterN2",
+                    "name": "Pavillion North 2",
+                    "type": "Switch",
+                    "room": "Heaters"
+                },
+                {
+                    "group": "HeaterS1",
+                    "name": "Pavillion South 1",
+                    "type": "Switch",
+                    "room": "Heaters"
+                },
+                {
+                    "group": "HeaterS2",
+                    "name": "Pavillion South 2",
+                    "type": "Switch",
+                    "room": "Heaters"
+                },
+                {
+                    "group": "AirMainPower",
+                    "name": "Air Main Power",
+                    "type": "Switch",
+                    "room": "Air Conditioning"
+                },
+                {
+                    "group": "AirZone1Switch",
+                    "name": "Zone 1 - Main Bed",
+                    "type": "Switch",
+                    "room": "Air Conditioning"
+                },
+                {
+                    "group": "AirZone2Switch",
+                    "name": "Zone 2 - Bedroom 3",
+                    "type": "Switch",
+                    "room": "Air Conditioning"
+                },
+                {
+                    "group": "AirZone3Switch",
+                    "name": "Zone 3 - Lounge",
+                    "type": "Switch",
+                    "room": "Air Conditioning"
+                },
+                {
+                    "group": "AirZone4Switch",
+                    "name": "Zone 4 - Dining",
+                    "type": "Switch",
+                    "room": "Air Conditioning"
+                },
+                {
+                    "group": "AirZone5Switch",
+                    "name": "Zone 5 - Living",
+                    "type": "Switch",
+                    "room": "Air Conditioning"
+                },
+                {
+                    "group": "AirZone6Switch",
+                    "name": "Zone 6 - Kitchen",
+                    "type": "Switch",
+                    "room": "Air Conditioning"
+                },
+                {
+                    "group": "AirZone7Switch",
+                    "name": "Zone 7 - Gym",
+                    "type": "Switch",
+                    "room": "Air Conditioning"
+                },
+                {
+                    "group": "AirZone8Switch",
+                    "name": "Zone 8 - Office",
+                    "type": "Switch",
+                    "room": "Air Conditioning"
+                },
+                {
+                    "group": "AirZone9Switch",
+                    "name": "Zone 9 - Guest",
+                    "type": "Switch",
+                    "room": "Air Conditioning"
+                },
+                {
+                    "group": "RussPwrLiving",
+                    "name": "Living Room TV",
+                    "type": "Switch",
+                    "room": "Audio Visual"
+                },
+                {
+                    "group": "RussPwrMainBed",
+                    "name": "Main Bedroom TV",
+                    "type": "Switch",
+                    "room": "Audio Visual"
+                },
+                {
+                    "group": "RussPwrKitchen",
+                    "name": "Kitchen TV",
+                    "type": "Switch",
+                    "room": "Audio Visual"
+                },
+                {
+                    "group": "RussPwrOffice",
+                    "name": "Office TV",
+                    "type": "Switch",
+                    "room": "Audio Visual"
+                },
+                {
+                    "group": "RussPwrGym",
+                    "name": "Gym TV",
+                    "type": "Switch",
+                    "room": "Audio Visual"
+                },
+                {
+                    "group": "RussPwrGuest",
+                    "name": "Guest Bedroom TV",
+                    "type": "Switch",
+                    "room": "Audio Visual"
+                },
+                {
+                    "group": "PwrPontoon",
+                    "name": "Pontoon Power",
+                    "type": "Switch",
+                    "room": "Outside Back"
+                },
+                {
+                    "group": "BlindEast",
+                    "name": "East Blind",
+                    "type": "Blind",
+                    "room": "Blinds"
+                },
+                {
+                    "group": "BlindNorth",
+                    "name": "North Blind",
+                    "type": "Blind",
+                    "room": "Blinds"
+                },
+                {
+                    "group": "BlindWest",
+                    "name": "West Blind",
+                    "type": "Blind",
+                    "room": "Blinds"
                 }
             ]
         }
