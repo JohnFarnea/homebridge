@@ -10,12 +10,11 @@ function CbusClient(log, config) {
         console.log('Initializing the cgate connector');
         this.cgate = new CGate(log, config);
         this.cgate.write("PROJECT USE WIND38\r");
-        this.cgate.write("NET OPEN 254\r");
     }
 }
 
 CbusClient.prototype.setValue = function(group, value) {
-    // convert Sii true/false to On/Off
+    // convert Siri true/false to On/Off
     if (value === true || value === 1) {
         value = 255;
     }
@@ -30,6 +29,7 @@ CbusClient.prototype.setValue = function(group, value) {
 }
 
 CbusClient.prototype.getValue = function(group) {
+    return 100;
     if (this.groupCache[group] != undefined) {
         this.log("returning value from cache for " + group);
         return this.groupCache[group];
