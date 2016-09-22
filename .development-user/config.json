@@ -17,17 +17,17 @@
                 "statusport": 20025,
                 "cbusname": "WIND38",
                 "network": 254,
-                "application": 56
+                "application": "56,60"
             },
             "accessories": [
                 {
-                    "group": "MainBedSPOE",
+                    "group": "//WIND38/254/56/70",
                     "name": "Jackie's Lamp",
                     "type": "Dimmer",
                     "room": "Main Bedroom"
                 },
                 {
-                    "group": "MainBedSPOW",
+                    "group": "//WIND38/254/56/68",
                     "name": "John's Lamp",
                     "type": "Dimmer",
                     "room": "Main Bedroom"

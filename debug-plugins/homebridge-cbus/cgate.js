@@ -5,11 +5,12 @@ var control = {};
 var events = {};
 var statuses = {};
 
-function CGate(log, config) {
+function CGate(log, config, setCacheCallback) {
   // TELNET SESSION TO CONTROL
   var CGate = this;
   this.log = log;
   this.config = config;
+  this.setCacheCallback = setCacheCallback;
   control = net.createConnection(config.cgate.contolport, config.cgate.host);
   control.on('error', function (error) {
     log('cgate control socket error: ' + error);
@@ -79,6 +80,7 @@ CGate.prototype.write = function (msg) {
   }
 }
 
+/* NOTE: This no longer will work as "application" can be more than 1 number
 CGate.prototype.cmdString = function (device, command, level, delay) {
   var message = '';
 
@@ -100,6 +102,7 @@ CGate.prototype.cmdString = function (device, command, level, delay) {
   }
   return message;
 }
+*/
 
 CGate.prototype.humanLevelValue = function (level) {
   // convert levels from 0-255 to 0-100
@@ -117,8 +120,13 @@ CGate.prototype.humanLevelValue = function (level) {
 
 CGate.prototype.syncLevels = function () {
   this.log('cgate syncing levels');
-  var msg = message = 'GET //' + this.config.cgate.cbusname + '/' + this.config.cgate.network + '/' + this.config.cgate.application + '/* level\n';
-  control.write(msg);
+  var appArray = this.config.cgate.application.toString().split(',');
+  for (var i=0;i<appArray.length;i++) {
+    var app = appArray[i];
+    this.log("Syncing application " + app);
+    var msg = message = 'GET //' + this.config.cgate.cbusname + '/' + this.config.cgate.network + '/' + app + '/* level\n';
+    control.write(msg);
+  }
 }
 
 ////////////////////////
@@ -140,8 +148,11 @@ CGate.prototype.parseMessage = function (data, type) {
     packet.action = array[1];
 
     // last element of arr2 is the group
-    temp = array[2].match(/\d+/g);
+    packet.address = array[2];
+    temp = array[2].replace(this.config.cgate.cbusname,"PROJECT"); // ensure project name does not contain numbers
+    temp = temp.match(/\d+/g);
     packet.group = temp[2];
+    packet.application = temp[1];
 
     var parseunit = array[3];
     var parseoid = array[4];
@@ -171,12 +182,28 @@ CGate.prototype.parseMessage = function (data, type) {
       packet.type = 'info';
       packet.level = this.humanLevelValue(temp[1]);
       var ind = (array.length == 3 ? 1 : 0);
-      var temp2 = array[ind].match(/\d+/g);
+      packet.address = array[ind];
+      this.log("ARRAY:" + array);
+      this.log("AD1:" + packet.address);
+      if (packet.address.substring(0,3) == "300") {
+        packet.address = packet.address.substring(4);
+        this.log("AD2:" + packet.address);
+      }
+      var temp2 = array[ind].replace(this.config.cbusname,"PROJECT").match(/\d+/g);
       packet.group = temp2[temp2.length - 1];
+      packet.application = temp2[temp2.length - 2];
     }
   }
 
+  // add back the // if its been removed by the aplit
+  if (packet.address && packet.address.substring(0,2) !== "//") {
+    packet.address = "//" + packet.address;
+  }
+
   this.log(packet);
+  if (packet.address && packet.level !== undefined) {
+    this.setCacheCallback(packet.address, packet.level);
+  }
 
   // are there custom things we want to do when this event occurs? ONLY do this for the status stream
   if (type == 'statusStream' || packet.type == 'info') {

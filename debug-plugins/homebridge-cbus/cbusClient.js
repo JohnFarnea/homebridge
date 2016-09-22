@@ -8,7 +8,7 @@ function CbusClient(log, config) {
 
     if(config.cgate){
         console.log('Initializing the cgate connector');
-        this.cgate = new CGate(log, config);
+        this.cgate = new CGate(log, config, this.setCache.bind(this));
         this.cgate.write("PROJECT USE WIND38\r");
     }
 }
@@ -28,14 +28,17 @@ CbusClient.prototype.setValue = function(group, value) {
     this.cgate.write("RAMP " + group + " " + value + " 0\r");
 }
 
+CbusClient.prototype.setCache = function(group, value) {
+    this.groupCache[group] = value;
+}
+
 CbusClient.prototype.getValue = function(group) {
-    return 100;
     if (this.groupCache[group] != undefined) {
-        this.log("returning value from cache for " + group);
+        this.log("returning value from cache for " + group + " : " + this.groupCache[group]);
         return this.groupCache[group];
     }
     this.log("Cache miss for " + group);
-    return true; // Default value
+    return 0; // Default value
 }
 
 CbusClient.prototype.clearCache = function() {
